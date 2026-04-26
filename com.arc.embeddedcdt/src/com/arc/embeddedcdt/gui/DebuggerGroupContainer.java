@@ -334,7 +334,7 @@ public class DebuggerGroupContainer extends Observable{
     deviceLabel.setLayoutData(deviceLabelGridData);
     ashlingDeviceText = new Text(rowComposite, SWT.SINGLE | SWT.BORDER | SWT.BEGINNING);
     ashlingDeviceText.setToolTipText(
-        "Run ash-arc-gdb-server.exe --help to view the list of supported devices.");
+        "Run ash-arc-gdb-server --help to view the list of supported devices.");
     GridData deviceGridData = new GridData(GridData.BEGINNING);
     deviceGridData.widthHint = 115;
     ashlingDeviceText.setLayoutData(deviceGridData);
