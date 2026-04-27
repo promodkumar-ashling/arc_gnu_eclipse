@@ -316,27 +316,28 @@ public class DebuggerGroupContainer extends Observable{
   }
 
   private void createAshlingDeviceAndProbeFields(Composite compositeCom) {
-    // Span all 3 parent columns with a sub-composite so neither DeviceText nor
-    // ProbeText is placed in col 3 (the Browse-button column) of the parent grid.
+    // Device label in col1 — aligns with JTAG frequency label
+    Label deviceLabel = new Label(compositeCom, SWT.LEFT);
+    deviceLabel.setText("Device:");
+    GridData deviceLabelGridData = new GridData(GridData.BEGINNING);
+    deviceLabelGridData.widthHint = 110;
+    deviceLabel.setLayoutData(deviceLabelGridData);
+
+    // Sub-composite in col2+col3 holds Device text + Probe label + Probe text in one row
     Composite rowComposite = new Composite(compositeCom, SWT.NONE);
     GridLayout rowLayout = new GridLayout(4, false);
     rowLayout.marginWidth = 0;
     rowLayout.marginHeight = 0;
     rowComposite.setLayout(rowLayout);
     GridData rowData = new GridData(GridData.FILL_HORIZONTAL);
-    rowData.horizontalSpan = 3;
+    rowData.horizontalSpan = 2;
     rowComposite.setLayoutData(rowData);
 
-    Label deviceLabel = new Label(rowComposite, SWT.LEFT);
-    deviceLabel.setText("Device:");
-    GridData deviceLabelGridData = new GridData(GridData.BEGINNING);
-    deviceLabelGridData.widthHint = 134;
-    deviceLabel.setLayoutData(deviceLabelGridData);
     ashlingDeviceText = new Text(rowComposite, SWT.SINGLE | SWT.BORDER | SWT.BEGINNING);
     ashlingDeviceText.setToolTipText(
         "Run ash-arc-gdb-server --help to view the list of supported devices.");
     GridData deviceGridData = new GridData(GridData.BEGINNING);
-    deviceGridData.widthHint = 115;
+    deviceGridData.widthHint = 120;
     ashlingDeviceText.setLayoutData(deviceGridData);
     if (!ashlingDevice.isEmpty())
       ashlingDeviceText.setText(ashlingDevice);
@@ -350,7 +351,7 @@ public class DebuggerGroupContainer extends Observable{
     Label probeLabel = new Label(rowComposite, SWT.LEFT);
     probeLabel.setText("Probe serial number:");
     GridData probeLabelGridData = new GridData(GridData.BEGINNING);
-    probeLabelGridData.horizontalIndent = 75;
+    probeLabelGridData.horizontalIndent = 100;
     probeLabel.setLayoutData(probeLabelGridData);
     ashlingProbeSerialNumberText = new Text(rowComposite, SWT.SINGLE | SWT.BORDER | SWT.BEGINNING);
     GridData probeGridData = new GridData(GridData.BEGINNING);
@@ -703,11 +704,12 @@ public class DebuggerGroupContainer extends Observable{
     Label label = new Label(subComp, SWT.LEFT);
     label.setText("ARC GDB Server:");
     GridData gd = new GridData();
+    gd.widthHint = 130;
     label.setLayoutData(gd);
 
-    GridData serverTypeComboGridData = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, false);
+    GridData serverTypeComboGridData = new GridData(SWT.BEGINNING, SWT.BEGINNING, false, false);
     serverTypeComboGridData.horizontalSpan = 4;
-    serverTypeComboGridData.minimumWidth = minTextWidth;
+    serverTypeComboGridData.widthHint = minTextWidth;
     externalToolsCombo = new Combo(subComp, SWT.None | SWT.READ_ONLY);
     externalToolsCombo.setLayoutData(serverTypeComboGridData);
     for (ArcGdbServer server: ArcGdbServer.values()) {
@@ -923,6 +925,7 @@ public class DebuggerGroupContainer extends Observable{
     label.setText(Messages.Port_number_textfield_label);
     GridData gdbPortLabelGridData = new GridData();
     gdbPortLabelGridData.horizontalSpan = 1;
+    gdbPortLabelGridData.widthHint = 130;
     label.setLayoutData(gdbPortLabelGridData);
 
     createGdbServerPortNumberText(subComp, minTextWidth);
@@ -1173,9 +1176,9 @@ public class DebuggerGroupContainer extends Observable{
   public void createGdbServerPortNumberText(Composite subComp, int minTextWidth){
     // GDB port text field
     gdbServerPortNumberText = new Text(subComp, SWT.SINGLE | SWT.BORDER | SWT.BEGINNING);
-    GridData gdbPortTextGridData = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, false);
+    GridData gdbPortTextGridData = new GridData(SWT.BEGINNING, SWT.BEGINNING, false, false);
     gdbPortTextGridData.horizontalSpan = 4;
-    gdbPortTextGridData.minimumWidth = minTextWidth;
+    gdbPortTextGridData.widthHint = minTextWidth + 17;
     gdbServerPortNumberText.setLayoutData(gdbPortTextGridData);
     gdbServerPortNumberText.addModifyListener(new ModifyListener() {
         public void modifyText(ModifyEvent event) {
