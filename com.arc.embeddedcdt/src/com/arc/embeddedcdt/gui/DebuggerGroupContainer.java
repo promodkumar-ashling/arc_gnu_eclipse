@@ -748,7 +748,7 @@ public class DebuggerGroupContainer extends Observable{
                 createTabItemGenericGdbServer = false;
                 createTabItemCustomGdb = false;
             } else if (gdbServer == ArcGdbServer.JTAG_ASHLING_OPELLAXD) {
-                setPortNumberText(LaunchConfigurationConstants.DEFAULT_ASHLING_PORT);
+                setPortNumberText(LaunchConfigurationConstants.DEFAULT_GDBSERVER_PORT);
 
                 groupNsim.dispose();
                 if (groupGenericGdbServer != null) {
@@ -771,7 +771,7 @@ public class DebuggerGroupContainer extends Observable{
                 groupComAshling.setText(gdbServer.toString());
                 groupComAshling.setVisible(true);
             } else if (gdbServer == ArcGdbServer.JTAG_ASHLING_VITRAXS) {
-                setPortNumberText(LaunchConfigurationConstants.DEFAULT_ASHLING_PORT);
+                setPortNumberText(LaunchConfigurationConstants.DEFAULT_GDBSERVER_PORT);
 
                 groupNsim.dispose();
                 if (groupGenericGdbServer != null) {
@@ -893,7 +893,7 @@ public class DebuggerGroupContainer extends Observable{
                 }
 
             } else if (gdbServer == ArcGdbServer.CUSTOM_GDBSERVER) {
-                setPortNumberText(LaunchConfigurationConstants.DEFAULT_ASHLING_PORT);
+                setPortNumberText(LaunchConfigurationConstants.DEFAULT_GDBSERVER_PORT);
 
                 groupNsim.dispose();
                 groupCom.dispose();

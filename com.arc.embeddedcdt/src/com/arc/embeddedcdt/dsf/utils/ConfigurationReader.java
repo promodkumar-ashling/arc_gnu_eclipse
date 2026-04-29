@@ -102,7 +102,7 @@ public class ConfigurationReader {
         break;
       case JTAG_ASHLING_OPELLAXD:
       case JTAG_ASHLING_VITRAXS:
-        defaultValue = LaunchConfigurationConstants.DEFAULT_ASHLING_PORT;
+        defaultValue = LaunchConfigurationConstants.DEFAULT_GDBSERVER_PORT;
         break;
       case NSIM:
         defaultValue = LaunchConfigurationConstants.DEFAULT_NSIM_PORT;

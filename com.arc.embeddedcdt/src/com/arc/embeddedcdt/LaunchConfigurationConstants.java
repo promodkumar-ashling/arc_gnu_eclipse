@@ -71,8 +71,8 @@ public interface LaunchConfigurationConstants {
     static final int CURRENT_FILE_FORMAT_VERSION = 2;
 
     // Default option values
+    static final String DEFAULT_GDBSERVER_PORT = "49105";
     static final String DEFAULT_OPENOCD_PORT = "49105";
-    static final String DEFAULT_ASHLING_PORT = "49105";
     static final String DEFAULT_NSIM_PORT = "49105";
     static final String DEFAULT_GDB_HOST = "localhost";
     static final String DEFAULT_OPENOCD_BIN_PATH_LINUX = "/usr/local/bin/openocd";
